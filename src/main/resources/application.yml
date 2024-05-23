@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: CoinTrack
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://dpg-cp7of90l6cac73e7j7g0-a.oregon-postgres.render.com/cointrack
+    username: cointrack_user
+    password: kGiEsOv6hXIS5iy53G5Vqb935Cj0ycYC
