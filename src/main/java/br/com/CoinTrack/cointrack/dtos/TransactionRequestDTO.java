@@ -8,6 +8,7 @@ import java.util.UUID;
 public record TransactionRequestDTO(
     String name,
     BigDecimal total,
+    Integer method,
     UUID userId,
     String date,
     Integer type

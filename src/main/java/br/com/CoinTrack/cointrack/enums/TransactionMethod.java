@@ -1,12 +1,13 @@
 package br.com.CoinTrack.cointrack.enums;
 
-public enum TransactionType {
-    Saida(1),
-    Entrada(2);
+public enum TransactionMethod {
+    Pix(1),
+    Credito(2),
+    Debito(3);
 
     private final int code;
 
-    private TransactionType(int code) {
+    private TransactionMethod(int code) {
         this.code = code;
     }
 
@@ -14,8 +15,8 @@ public enum TransactionType {
         return code;
     }
 
-    public static TransactionType valueOf(int code) {
-        for(TransactionType value : TransactionType.values()) {
+    public static TransactionMethod valueOf(int code) {
+        for(TransactionMethod value : TransactionMethod.values()) {
             if(code == value.getCode()) {
                 return value;
             }

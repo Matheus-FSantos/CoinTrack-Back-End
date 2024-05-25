@@ -7,5 +7,6 @@ public record TransactionPutRequestDTO(
     String name,
     BigDecimal total,
     String date,
+    Integer method,
     Integer type
 ) { }

@@ -1,5 +1,6 @@
 package br.com.CoinTrack.cointrack.entities;
 
+import br.com.CoinTrack.cointrack.enums.TransactionMethod;
 import br.com.CoinTrack.cointrack.enums.TransactionType;
 import jakarta.persistence.*;
 
@@ -27,6 +28,9 @@ public class Transaction implements Serializable {
     private Integer type;
 
     @Column(nullable=false)
+    private Integer method;
+
+    @Column(nullable=false)
     private BigDecimal total;
 
     @ManyToOne
@@ -38,12 +42,13 @@ public class Transaction implements Serializable {
 
     public Transaction() { }
 
-    public Transaction(String name, Integer type, User user, BigDecimal total, LocalDate date) {
+    public Transaction(String name, Integer type, Integer method, User user, BigDecimal total, LocalDate date) {
         this.name = name;
         this.total = total;
         this.user = user;
         this.date = date;
         this.type = type;
+        this.method = method;
     }
 
     @Override
@@ -52,7 +57,9 @@ public class Transaction implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", type=" + type +
+                ", method=" + method +
                 ", total=" + total +
+                ", user=" + user +
                 ", date=" + date +
                 '}';
     }
@@ -81,28 +88,28 @@ public class Transaction implements Serializable {
         this.name = name;
     }
 
-    public TransactionType getType() {
-        return TransactionType.valueOf(type);
+    public TransactionMethod getMethod() {
+        return TransactionMethod.valueOf(method);
     }
 
-    public void updateType(TransactionType type) {
-        if(type != null) {
-            this.setType(type);
+    public void updateMethod(TransactionMethod method) {
+        if(method != null) {
+            this.setMethod(method);
         }
     }
 
-    public void updateType(Integer type) {
-        if(type != null) {
-            this.setType(type);
+    public void updateMethod(Integer method) {
+        if(method != null) {
+            this.setMethod(method);
         }
     }
 
-    private void setType(TransactionType type) {
-        this.type = type.getCode();
+    private void setMethod(TransactionMethod method) {
+        this.method = method.getCode();
     }
 
-    private void setType(Integer type) {
-        this.type = type;
+    private void setMethod(Integer method) {
+        this.method = method;
     }
 
     public User getUser() {
@@ -115,6 +122,20 @@ public class Transaction implements Serializable {
 
     private void setUser(User user) {
         this.user = user;
+    }
+
+    public TransactionType getType() {
+        return TransactionType.valueOf(type);
+    }
+
+    public void updateType(Integer type) {
+        if(method != null) {
+            this.setMethod(method);
+        }
+    }
+
+    private void setType(Integer type) {
+        this.type = type;
     }
 
     public BigDecimal getTotal() {

@@ -18,6 +18,7 @@ public class TransactionValidation {
         TransactionValidation.nameValidation(messages, transaction.name());
         TransactionValidation.totalValidation(messages, transaction.total());
         TransactionValidation.dateValidation(messages, transaction.date());
+        TransactionMethodValidation.validation(messages, transaction.method());
         TransactionTypeValidation.validation(messages, transaction.type());
 
         if(!messages.isEmpty())
@@ -30,6 +31,7 @@ public class TransactionValidation {
         TransactionValidation.nameValidation(messages, transaction.name());
         TransactionValidation.totalValidation(messages, transaction.total());
         TransactionValidation.dateValidation(messages, transaction.date());
+        TransactionMethodValidation.validation(messages, transaction.method());
         TransactionTypeValidation.validation(messages, transaction.type());
 
         if(!messages.isEmpty())

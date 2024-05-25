@@ -1,6 +1,7 @@
 package br.com.CoinTrack.cointrack.dtos;
 
 import br.com.CoinTrack.cointrack.entities.User;
+import br.com.CoinTrack.cointrack.enums.TransactionMethod;
 import br.com.CoinTrack.cointrack.enums.TransactionType;
 import br.com.CoinTrack.cointrack.utils.PriceFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -13,6 +14,7 @@ import java.util.UUID;
 public record TransactionResponseDTO(
     UUID id,
     String name,
+    TransactionMethod method,
     TransactionType type,
     User user,
     BigDecimal total,

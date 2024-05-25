@@ -33,6 +33,7 @@ public class TransactionService {
             .map(transaction -> new TransactionResponseDTO(
                     transaction.getId(),
                     transaction.getName(),
+                    transaction.getMethod(),
                     transaction.getType(),
                     transaction.getUser(),
                     transaction.getTotal(),
@@ -46,6 +47,7 @@ public class TransactionService {
             .map(transaction -> new TransactionResponseDTO(
                     transaction.getId(),
                     transaction.getName(),
+                    transaction.getMethod(),
                     transaction.getType(),
                     transaction.getUser(),
                     transaction.getTotal(),
@@ -59,6 +61,7 @@ public class TransactionService {
             new TransactionResponseDTO(
                     transaction.getId(),
                     transaction.getName(),
+                    transaction.getMethod(),
                     transaction.getType(),
                     transaction.getUser(),
                     transaction.getTotal(),
@@ -78,6 +81,7 @@ public class TransactionService {
                     new Transaction(
                             body.name(),
                             body.type(),
+                            body.method(),
                             user,
                             body.total(),
                             DateEntityMapper.toLocalDate(body.date())
@@ -92,7 +96,7 @@ public class TransactionService {
             /* Fields Validation */
             TransactionValidation.validation(body);
             Transaction oldTransaction = this.repository.findById(id).get();
-            Transaction updatedTransaction = new Transaction(body.name(), body.type(), oldTransaction.getUser(), body.total(), DateEntityMapper.toLocalDate(body.date()));
+            Transaction updatedTransaction = new Transaction(body.name(), body.type(), body.method(), oldTransaction.getUser(), body.total(), DateEntityMapper.toLocalDate(body.date()));
             updatedTransaction.updateId(id);
             this.repository.save(updatedTransaction);
         } else
